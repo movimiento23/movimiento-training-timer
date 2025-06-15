@@ -1,20 +1,23 @@
 {
   "name": "Movimiento Training",
-  "short_name": "Training",
-  "start_url": ".",
+  "short_name": "Movimiento",
+  "description": "Temporizador de intervalos y cronómetro para tus entrenamientos.",
+  "start_url": "/index.html",
   "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#ff0000",
-  "orientation": "portrait",
-  "description": "Temporizador PWA para Movimiento Training",
+  "background_color": "#1e1e1e",
+  "theme_color": "#F44336",
+  "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "icon-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png"
+      "src": "icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
     },
     {
-      "src": "icon-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png"
+      "src": "icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
     }
+  ]
+}
+

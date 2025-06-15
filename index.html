@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -8,14 +7,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
-    
     <link rel="manifest" href="manifest.json">
-    <link rel="icon" href="icons/icon-192x192.png"
-    
+    <meta name="theme-color" content="#F44336">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="MT Timer">
-    <link rel="apple-touch-icon" href="/movimiento-training-timer/logo.png">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Movimiento">
+    <link rel="apple-touch-icon" href="icon-192.png">
 </head>
 <body>
     <div class="app-container">
@@ -26,6 +23,7 @@
         
         <main>
             <div id="interval-timer-app">
+                <!-- Setup View -->
                 <div id="setup-view">
                     <h2>Entrenamiento Rápido</h2>
                     <div class="control-group">
@@ -55,6 +53,7 @@
                     <button id="start-btn" class="btn-primary">Empezar</button>
                 </div>
 
+                <!-- Timer View -->
                 <div id="timer-view" class="hidden">
                     <div id="timer-info">
                         <p id="current-set-display">SET 1 / 8</p>
@@ -79,24 +78,7 @@
             </div>
         </main>
     </div>
-    
-    <script src="script.js"></script>
 
-    <script>
-        // CORRECCIÓN 5: Simplificación del registro del Service Worker
-        // Se repitió el bloque 'if ('serviceWorker' in navigator)'
-        // Y la ruta debe ser ABSOLUTA para GitHub Pages
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/movimiento-training-timer/service-worker.js')
-                    .then(registration => {
-                        console.log('Service Worker registrado con éxito:', registration);
-                    })
-                    .catch(error => {
-                        console.log('Service Worker falló en el registro:', error);
-                    });
-            });
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
