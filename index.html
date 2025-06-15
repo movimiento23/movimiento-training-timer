@@ -8,13 +8,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
-     
-    <link rel="manifest" href="/manifest.json">  
+    
+    <link rel="manifest" href="/movimiento-training-timer/manifest.json">
+    
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="MT Timer">
-    <link rel="apple-touch-icon" href="/logo.png">  
-    </head>
+    <link rel="apple-touch-icon" href="/movimiento-training-timer/logo.png">
+</head>
 <body>
     <div class="app-container">
         <header>
@@ -79,19 +80,22 @@
     </div>
     
     <script src="script.js"></script>
+
     <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          // Asegúrate que la ruta al service-worker.js sea correcta
-          navigator.serviceWorker.register('/service-worker.js')  
-            .then(registration => {
-              console.log('ServiceWorker registered: ', registration);
-            })
-            .catch(error => {
-              console.log('ServiceWorker registration failed: ', error);
+        // CORRECCIÓN 5: Simplificación del registro del Service Worker
+        // Se repitió el bloque 'if ('serviceWorker' in navigator)'
+        // Y la ruta debe ser ABSOLUTA para GitHub Pages
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/movimiento-training-timer/service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registrado con éxito:', registration);
+                    })
+                    .catch(error => {
+                        console.log('Service Worker falló en el registro:', error);
+                    });
             });
-        });
-      }
+        }
     </script>
-    </body>
+</body>
 </html>
