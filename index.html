@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movimiento Training</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
+
+    <link rel="manifest" href="/manifest.json">  
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="MT Timer">
+    <link rel="apple-touch-icon" href="/logo.png">  
+    </head>
+<body>
+    <div class="app-container">
+        <header>
+            <img class="logo" src="logo.png" alt="Movimiento Training Logo">
+            <h1>Movimiento Training</h1>
+        </header>
+        
+        <main>
+            <div id="interval-timer-app">
+                <div id="setup-view">
+                    <h2>Entrenamiento Rápido</h2>
+                    <div class="control-group">
+                        <label>SETS</label>
+                        <div class="input-control">
+                            <button class="btn-control" data-action="decrease" data-target="sets">-</button>
+                            <span id="sets-value">8</span>
+                            <button class="btn-control" data-action="increase" data-target="sets">+</button>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label>TRABAJO</label>
+                        <div class="input-control">
+                            <button class="btn-control" data-action="decrease" data-target="work">-</button>
+                            <span id="work-value">00:20</span>
+                            <button class="btn-control" data-action="increase" data-target="work">+</button>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label>DESCANSO</label>
+                        <div class="input-control">
+                            <button class="btn-control" data-action="decrease" data-target="rest">-</button>
+                            <span id="rest-value">00:10</span>
+                            <button class="btn-control" data-action="increase" data-target="rest">+</button>
+                        </div>
+                    </div>
+                    <button id="start-btn" class="btn-primary">Empezar</button>
+                </div>
+
+                <div id="timer-view" class="hidden">
+                    <div id="timer-info">
+                        <p id="current-set-display">SET 1 / 8</p>
+                        <h2 id="current-phase-display">TRABAJO</h2>
+                    </div>
+                    <div id="timer-display">00:20</div>
+                    <div class="timer-controls">
+                        <button id="pause-resume-btn" class="btn-secondary">Pausar</button>
+                        <button id="reset-btn" class="btn-secondary">Reiniciar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="stopwatch-app">
+                <h2>Cronómetro</h2>
+                <div id="stopwatch-display">00:00:00.00</div>
+                <div class="stopwatch-controls">
+                    <button id="stopwatch-start-stop-btn" class="btn-primary">Iniciar</button>
+                    <button id="stopwatch-lap-reset-btn" class="btn-secondary">Vuelta</button>
+                </div>
+                <ul id="laps-list"></ul>
+            </div>
+        </main>
+    </div>
+    
+    <script src="script.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          // Asegúrate que la ruta al service-worker.js sea correcta
+          navigator.serviceWorker.register('/service-worker.js')  
+            .then(registration => {
+              console.log('ServiceWorker registered: ', registration);
+            })
+            .catch(error => {
+              console.log('ServiceWorker registration failed: ', error);
+            });
+        });
+      }
+    </script>
+    </body>
+</html>

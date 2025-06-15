@@ -1,0 +1,21 @@
+{
+  "name": "Temporizador Movimiento Training",
+  "short_name": "MT Timer",
+  "description": "Tu temporizador personalizado de Movimiento Training para tus entrenamientos.",
+  "start_url": "/index.html",  
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#FF0000",
+  "icons": [
+    {
+      "src": "/logo.png",      
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo.png",      
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
