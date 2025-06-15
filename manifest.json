@@ -3,6 +3,7 @@
   "short_name": "Movimiento",
   "description": "Temporizador de intervalos y cronómetro para tus entrenamientos.",
   "start_url": "/index.html",
+  "id": "/index.html",   
   "display": "standalone",
   "background_color": "#1e1e1e",
   "theme_color": "#F44336",
@@ -20,4 +21,3 @@
     }
   ]
 }
-
