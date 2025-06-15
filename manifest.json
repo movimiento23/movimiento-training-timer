@@ -1,21 +1,20 @@
 {
   "name": "Movimiento Training",
-  "short_name": "Movimiento",
-  "start_url": "/",
+  "short_name": "Training",
+  "start_url": ".",
   "display": "standalone",
   "background_color": "#000000",
-  "theme_color": "#FF0000",
+  "theme_color": "#ff0000",
   "orientation": "portrait",
+  "description": "Temporizador PWA para Movimiento Training",
   "icons": [
     {
-      "src": "icons/icon-192x192.png",
+      "src": "icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "icons/icon-512x512.png",
+      "src": "icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
-  ]
-}
