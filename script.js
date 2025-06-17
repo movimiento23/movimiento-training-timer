@@ -1,3 +1,30 @@
+let deferredPrompt;
+const installBtn = document.getElementById('install-btn');
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Previene que el prompt se muestre automáticamente
+  e.preventDefault();
+  // Guarda el evento para lanzarlo más tarde
+  deferredPrompt = e;
+  // Muestra el botón de instalación
+  installBtn.style.display = 'block';
+});
+
+installBtn.addEventListener('click', async () => {
+  // Oculta el botón
+  installBtn.style.display = 'none';
+  if (!deferredPrompt) {
+    return;
+  }
+  // Muestra el prompt de instalación
+  deferredPrompt.prompt();
+  // Espera la respuesta del usuario
+  const choiceResult = await deferredPrompt.userChoice;
+  console.log('Resultado de la instalación:', choiceResult.outcome);
+  deferredPrompt = null;
+});
+
+
 // --- PWA Service Worker Registration ---
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
