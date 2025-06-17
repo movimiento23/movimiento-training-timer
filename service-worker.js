@@ -21,8 +21,8 @@ const URLS_TO_CACHE = [
   'https://fonts.gstatic.com/s/robotomono/v23/L0xuDF4xlVMF-BfR8bXMIhJHg45mwgGEFl0_3vrtSM1J-g.woff2'
 ];
 
-// Install the service worker and cache all assets
 self.addEventListener('install', event => {
+  self.skipWaiting(); // Activar el SW de inmediato, sin esperar al reload
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
@@ -31,6 +31,7 @@ self.addEventListener('install', event => {
       })
   );
 });
+
 
 // Fetch assets from cache or network
 self.addEventListener('fetch', event => {
