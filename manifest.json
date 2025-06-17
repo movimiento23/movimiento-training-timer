@@ -1,22 +1,28 @@
 {
-  "name": "Movimiento Training",
-  "short_name": "Movimiento",
-  "description": "Temporizador de entrenamiento y cronómetro para tus workouts.",
-  "start_url": "/index.html",
+  "name": "Movimiento Training Timer",
+  "short_name": "Training Timer",
+  "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#121212",
-  "theme_color": "#F44336",
+  "background_color": "#ffffff",
+  "theme_color": "#ff0000",
+  "orientation": "portrait",
   "icons": [
     {
-      "src": "icon-192.png",
-      "type": "image/png",
-      "sizes": "192x192"
+      "src": "icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
     },
     {
-      "src": "icon-512.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "src": "icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshot1.png",
+      "sizes": "540x720",
+      "type": "image/png"
     }
   ]
 }
-
