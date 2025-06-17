@@ -1,0 +1,22 @@
+{
+  "name": "Movimiento Training",
+  "short_name": "Movimiento",
+  "description": "Temporizador de entrenamiento y cronómetro para tus workouts.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#F44336",
+  "icons": [
+    {
+      "src": "icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
+
