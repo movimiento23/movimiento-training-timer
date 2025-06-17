@@ -1,24 +1,33 @@
-const CACHE_NAME = 'movimiento-training-timer-v1';
+const CACHE_NAME = 'movimiento-training-timer-v3'; // ¡CAMBIAR LA VERSIÓN DEL CACHÉ!
 const urlsToCache = [
-  '/', // La raíz de tu subdominio, que apunta a index.html
-  '/index.html',
-  '/style.css',
-  '/script.js',
-  '/logo.png',
-  '/countdown.mp3', // ¡Actualizado con la extensión!
-  '/finish.mp3',    // ¡Actualizado con la extensión!
-  '/frich.mp3',     // ¡Actualizado con la extensión!
-  '/start_rest.mp3',// ¡Actualizado con la extensión!
-  '/start_work.mp3',// ¡Actualizado con la extensión!
-  '/wallpaper.wiki-Wallpapers-Free-Crossfit-.jpg' 
+  './', // La raíz del directorio actual, que apunta a index.html
+  './index.html',
+  './style.css',
+  './script.js',
+  './manifest.json', 
+  './logo.png', 
+  './icon-192x192.png', 
+  './icon-512x512.png', 
+  './countdown.mp3',
+  './finish.mp3',
+  './frich.mp3',
+  './start_rest.mp3',
+  './start_work.mp3',
+  './wallpaper.jpg' 
 ];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then((cache) => {
-        console.log('Opened cache');
-        return cache.addAll(urlsToCache);
+        console.log('Opened cache. Caching files: ', urlsToCache); // Para depuración
+        return cache.addAll(urlsToCache)
+          .catch(error => {
+            console.error('Error al cachear algunas URLs durante la instalación:', error);
+          });
+      })
+      .catch(error => {
+        console.error('Error al abrir el caché durante la instalación:', error);
       })
   );
 });
@@ -32,6 +41,11 @@ self.addEventListener('fetch', (event) => {
         }
         return fetch(event.request);
       })
+      .catch(error => { // Añadir un catch para errores de red/fetch
+        console.error('Fetch failed:', event.request.url, error);
+        // Si no hay respuesta de la caché y falla la red, puedes servir una página offline.
+        // Por ahora, solo logueamos el error.
+      })
   );
 });
 
@@ -42,6 +56,7 @@ self.addEventListener('activate', (event) => {
       return Promise.all(
         cacheNames.map((cacheName) => {
           if (cacheWhitelist.indexOf(cacheName) === -1) {
+            console.log('Deleting old cache:', cacheName); // Para depuración
             return caches.delete(cacheName);
           }
         })
