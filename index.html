@@ -1,11 +1,14 @@
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-initial-scale=1.0">
     <title>Movimiento Training</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json">
+    
+    <link rel="manifest" href="./manifest.json"> 
     <meta name="theme-color" content="#F44336">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
@@ -19,7 +22,6 @@
         
         <main>
             <div id="interval-timer-app">
-                <!-- Setup View -->
                 <div id="setup-view">
                     <h2 id="setup-title">Ponete En Movimiento</h2>
                     <div class="control-group">
@@ -49,7 +51,6 @@
                     <button id="start-btn" class="btn-primary">Empezar</button>
                 </div>
 
-                <!-- Timer View -->
                 <div id="timer-view" class="hidden">
                     <div id="timer-info">
                         <p id="current-set-display">SET 1 / 8</p>
@@ -92,5 +93,14 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./service-worker.js')
+                    .then(reg => console.log('Service Worker registrado con éxito:', reg.scope))
+                    .catch(err => console.error('Error al registrar el Service Worker:', err));
+            });
+        }
+    </script>
 </body>
 </html>
