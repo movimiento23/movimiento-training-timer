@@ -1,7 +1,7 @@
 {
   "name": "Movimiento Training Timer",
   "short_name": "Training Timer",
-  "id": "/index.html",            
+  "id": "/index.html",
   "description": "Temporizador de entrenamiento y cronómetro para tus workouts.",
   "start_url": "./index.html",
   "display": "standalone",
@@ -11,20 +11,29 @@
   "icons": [
     {
       "src": "icon-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "sizes": "192x192"
     },
     {
       "src": "icon-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "sizes": "512x512"
     }
   ],
   "screenshots": [
     {
-      "src": "screenshot1.png",
-      "sizes": "540x720",
-      "type": "image/png"
+      "src": "/screenshot-desktop.png",
+      "sizes": "1280x800",
+      "form_factor": "wide",
+      "type": "image/png",
+      "label": "Vista del temporizador en escritorio"
+    },
+    {
+      "src": "/screenshot-mobile.png",
+      "sizes": "640x1136",
+      "form_factor": "narrow",
+      "type": "image/png",
+      "label": "Vista del temporizador en móvil"
     }
   ]
 }
