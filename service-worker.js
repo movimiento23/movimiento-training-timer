@@ -1,14 +1,13 @@
-const CACHE_NAME = 'movimiento-training-timer-v3'; // ¡CAMBIAR LA VERSIÓN DEL CACHÉ!
+const CACHE_NAME = 'movimiento-training-timer-v3'; // ¡CAMBIADO A V3! Excelente.
 const urlsToCache = [
-  './', // La raíz del directorio actual, que apunta a index.html
+  './', 
   './index.html',
   './style.css',
   './script.js',
   './manifest.json', 
-  './logo.png', 
+  './logo.png',     
   './icon-192x192.png', 
   './icon-512x512.png', 
-  './countdown.mp3',
   './finish.mp3',
   './frich.mp3',
   './start_rest.mp3',
@@ -20,7 +19,7 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then((cache) => {
-        console.log('Opened cache. Caching files: ', urlsToCache); // Para depuración
+        console.log('Opened cache. Caching files: ', urlsToCache);
         return cache.addAll(urlsToCache)
           .catch(error => {
             console.error('Error al cachear algunas URLs durante la instalación:', error);
@@ -41,10 +40,8 @@ self.addEventListener('fetch', (event) => {
         }
         return fetch(event.request);
       })
-      .catch(error => { // Añadir un catch para errores de red/fetch
+      .catch(error => {
         console.error('Fetch failed:', event.request.url, error);
-        // Si no hay respuesta de la caché y falla la red, puedes servir una página offline.
-        // Por ahora, solo logueamos el error.
       })
   );
 });
@@ -56,7 +53,7 @@ self.addEventListener('activate', (event) => {
       return Promise.all(
         cacheNames.map((cacheName) => {
           if (cacheWhitelist.indexOf(cacheName) === -1) {
-            console.log('Deleting old cache:', cacheName); // Para depuración
+            console.log('Deleting old cache:', cacheName);
             return caches.delete(cacheName);
           }
         })
