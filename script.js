@@ -1,17 +1,17 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // --- PWA: SERVICE WORKER REGISTRATION ---
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/sw.js')
-                .then(registration => {
-                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                })
-                .catch(error => {
-                    console.log('ServiceWorker registration failed: ', error);
-                });
-        });
-    }
+// --- PWA Service Worker Registration ---
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(registration => {
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+      })
+      .catch(err => {
+        console.log('ServiceWorker registration failed: ', err);
+      });
+  });
+}
 
+document.addEventListener('DOMContentLoaded', () => {
     // --- COMMON: WEB AUDIO API SETUP ---
     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
     const sounds = {};
@@ -64,9 +64,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const timerDisplay = document.getElementById('timer-display');
     const phaseDisplayColorWork = '#F44336';
     const phaseDisplayColorRest = '#2196F3';
+    const setupTitle = document.getElementById('setup-title');
 
     let settings = { sets: 8, work: 20, rest: 10 };
     let timerState = { currentSet: 1, isWorkPhase: true, timeLeft: settings.work, isPaused: false, intervalId: null };
+    let countdownIntervalId = null;
 
     const formatTime = (seconds) => `${Math.floor(seconds / 60).toString().padStart(2, '0')}:${(seconds % 60).toString().padStart(2, '0')}`;
 
@@ -91,9 +93,37 @@ document.addEventListener('DOMContentLoaded', () => {
         updateSetupDisplay();
     });
 
-    function startWorkout() {
+    function initiateCountdown() {
         setupView.classList.add('hidden');
         timerView.classList.remove('hidden');
+        
+        pauseResumeBtn.disabled = true;
+        
+        currentSetDisplay.textContent = 'Prepárate';
+        currentPhaseDisplay.textContent = 'COMIENZA EN...';
+        currentPhaseDisplay.style.color = '#e0e0e0';
+        
+        let countdown = 5;
+        
+        timerDisplay.textContent = formatTime(countdown);
+        playSound('countdown');
+        
+        countdownIntervalId = setInterval(() => {
+            countdown--;
+            timerDisplay.textContent = formatTime(countdown);
+
+            if (countdown > 0) {
+                playSound('countdown');
+            } else {
+                clearInterval(countdownIntervalId);
+                countdownIntervalId = null;
+                startWorkout();
+            }
+        }, 1000);
+    }
+
+    function startWorkout() {
+        pauseResumeBtn.disabled = false;
         timerState = { currentSet: 1, isWorkPhase: true, timeLeft: settings.work, isPaused: false, intervalId: null };
         updateTimerDisplay();
         startTimerInterval();
@@ -149,6 +179,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
     function resetWorkout() {
         clearInterval(timerState.intervalId);
+        if (countdownIntervalId) {
+            clearInterval(countdownIntervalId);
+            countdownIntervalId = null;
+        }
         timerView.classList.add('hidden');
         setupView.classList.remove('hidden');
         pauseResumeBtn.textContent = 'Pausar';
@@ -156,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const endWorkout = () => { playSound('finish'); resetWorkout(); };
 
-    startBtn.addEventListener('click', startWorkout);
+    startBtn.addEventListener('click', initiateCountdown);
     pauseResumeBtn.addEventListener('click', pauseResumeTimer);
     resetBtn.addEventListener('click', resetWorkout);
 
@@ -211,6 +245,36 @@ document.addEventListener('DOMContentLoaded', () => {
             stopwatchDisplay.textContent = '00:00:00.00';
             lapsList.innerHTML = '';
             lapResetBtn.textContent = 'Vuelta';
+        }
+    });
+
+    // --- WORKOUT PRESETS ---
+    const presetsSelect = document.getElementById('presets-select');
+    const workoutPresets = {
+        amrap10: { sets: 1, work: 10 * 60, rest: 0 },
+        amrap12: { sets: 1, work: 12 * 60, rest: 0 },
+        amrap15: { sets: 1, work: 15 * 60, rest: 0 },
+        emom10: { sets: 10, work: 60, rest: 0 },
+        emom12: { sets: 12, work: 60, rest: 0 },
+        tabata4: { sets: 8, work: 20, rest: 10 },
+        circuito45x15: { sets: 12, work: 45, rest: 15 },
+        hiit30x15: { sets: 15, work: 30, rest: 15 },
+        hiit25x15: { sets: 12, work: 25, rest: 15 }
+    };
+
+    presetsSelect.addEventListener('change', (e) => {
+        const selectedPreset = e.target.value;
+        const selectedOption = e.target.options[e.target.selectedIndex];
+        
+        if (workoutPresets[selectedPreset]) {
+            const preset = workoutPresets[selectedPreset];
+            settings.sets = preset.sets;
+            settings.work = preset.work;
+            settings.rest = preset.rest;
+            updateSetupDisplay();
+            setupTitle.textContent = selectedOption.text;
+        } else {
+            setupTitle.textContent = 'Ponete En Movimiento';
         }
     });
 

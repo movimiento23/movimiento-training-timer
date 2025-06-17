@@ -4,15 +4,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movimiento Training</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#F44336">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#F44336">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Movimiento">
-    <link rel="apple-touch-icon" href="icon-192.png">
 </head>
 <body>
     <div class="app-container">
@@ -25,7 +21,7 @@
             <div id="interval-timer-app">
                 <!-- Setup View -->
                 <div id="setup-view">
-                    <h2>Entrenamiento Rápido</h2>
+                    <h2 id="setup-title">Ponete En Movimiento</h2>
                     <div class="control-group">
                         <label>SETS</label>
                         <div class="input-control">
@@ -75,6 +71,22 @@
                     <button id="stopwatch-lap-reset-btn" class="btn-secondary">Vuelta</button>
                 </div>
                 <ul id="laps-list"></ul>
+            </div>
+
+            <div id="workout-presets">
+                <h2>Elegí Tu Entrenamiento</h2>
+                <select id="presets-select" class="btn-secondary">
+                    <option value="">Seleccionar workout...</option>
+                    <option value="amrap10">Amrap 10´</option>
+                    <option value="amrap12">Amrap 12´</option>
+                    <option value="amrap15">Amrap 15´</option>
+                    <option value="emom10">Emom 10´</option>
+                    <option value="emom12">Emom 12´</option>
+                    <option value="tabata4">TABATA 4´</option>
+                    <option value="circuito45x15">Circuito 45 x 15</option>
+                    <option value="hiit30x15">HIIT 30 x 15 x 3</option>
+                    <option value="hiit25x15">HIIT 25 x 15 x 3</option>
+                </select>
             </div>
         </main>
     </div>

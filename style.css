@@ -1,6 +1,6 @@
 body {
     font-family: 'Roboto', sans-serif;
-    background-image: url('/a/636b8491-ef52-4277-b0f4-0fb26893acf6');
+    background-image: url('/wallpaper.wiki-Wallpapers-Free-Crossfit-Download-PIC-WPB004205-1024x683 (1).jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -25,19 +25,37 @@ body::before {
 }
 
 .app-container {
-    background-color: #1e1e1e;
+    background-image: url("/banda de suspension.jpg");
+    background-size: cover;
+    background-position: center;
     border-radius: 20px;
     padding: 20px;
     width: 90%;
     max-width: 400px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     text-align: center;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.app-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(30, 30, 30, 0.8);
+    z-index: 2;
 }
 
 header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    z-index: 3;
 }
 
 .logo {
@@ -52,12 +70,21 @@ header h1 {
     color: #F44336; /* A red accent color */
 }
 
+main {
+    position: relative;
+    z-index: 3;
+}
+
 main h2 {
     font-size: 20px;
     font-weight: 500;
     color: #e0e0e0;
     margin-top: 30px;
     margin-bottom: 20px;
+}
+
+#setup-title {
+    margin-top: 10px;
 }
 
 /* Interval Timer Styles */
@@ -82,7 +109,7 @@ main h2 {
 .control-group label {
     font-size: 16px;
     font-weight: 400;
-    color: #aaa;
+    color: #ffffff;
     text-transform: uppercase;
 }
 
@@ -238,4 +265,29 @@ main h2 {
 }
 #laps-list li span:first-child {
     color: #aaa;
+}
+
+/* Workout Presets Styles */
+#workout-presets {
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    margin-top: 20px;
+}
+
+#workout-presets h2 {
+    margin-top: 0;
+    color: #ffffff;
+}
+
+#presets-select {
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1.2em;
+    padding-right: 3rem; /* Make space for arrow */
 }
