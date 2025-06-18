@@ -5,16 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Movimiento Training</title>
 
-  <!-- Estilos -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- Manifest y PWA -->
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#F44336">
   <link rel="apple-touch-icon" href="icon-192x192.png">
   <link rel="apple-touch-icon" sizes="512x512" href="icon-512x512.png">
 
-  <!-- Tipografía -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
@@ -40,7 +37,6 @@
 
     <main>
       <div id="interval-timer-app">
-        <!-- Setup View -->
         <div id="setup-view">
           <h2 id="setup-title">Ponete En Movimiento</h2>
 
@@ -74,7 +70,6 @@
           <button id="start-btn" class="btn-primary">Empezar</button>
         </div>
 
-        <!-- Timer View -->
         <div id="timer-view" class="hidden">
           <div id="timer-info">
             <p id="current-set-display">SET 1 / 8</p>
@@ -116,13 +111,12 @@
     </main>
   </div>
 
-  <!-- Scripts -->
   <script src="script.js"></script>
   <script>
     // Registro del Service Worker
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
+        navigator.serviceWorker.register('/service-worker.js') 
           .then(reg => console.log('✅ Service Worker registrado', reg))
           .catch(err => console.error('❌ Error al registrar Service Worker', err));
       });
