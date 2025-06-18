@@ -3,7 +3,7 @@
   "short_name": "Training Timer",
   "description": "Temporizador de entrenamiento y cronómetro para tus workouts.",
   "id": "/index.html",
-  "start_url": "/index.html",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#ff0000",
