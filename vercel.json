@@ -1,0 +1,6 @@
+{
+  "version": 2,
+  "routes": [
+    { "src": "/service-worker.js", "dest": "/service-worker.js" }
+  ]
+}
