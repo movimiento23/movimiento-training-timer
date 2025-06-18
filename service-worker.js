@@ -1,5 +1,5 @@
 // Nombre de la caché
-const CACHE_NAME = "movimiento-training-v5";
+const CACHE_NAME = "movimiento-training-v6";
 const urlsToCache = [
   "/",
   "/index.html",
@@ -17,6 +17,7 @@ self.addEventListener("install", event => {
       return cache.addAll(urlsToCache);
     })
   );
+  self.skipWaiting(); // Forzar activación inmediata
 });
 
 // Activación y limpieza de caché antigua
@@ -32,6 +33,7 @@ self.addEventListener("activate", event => {
       );
     })
   );
+  clients.claim(); // Garantizar que los nuevos clientes usen el SW actualizado
 });
 
 // Interceptar solicitudes y servir desde caché
@@ -43,11 +45,9 @@ self.addEventListener("fetch", event => {
   );
 });
 
-// Forzar actualización inmediata para evitar problemas de instalación
-self.addEventListener("install", event => {
-  self.skipWaiting();
-});
-
-self.addEventListener("activate", event => {
-  clients.claim();
+// Forzar actualización cuando hay un nuevo SW
+self.addEventListener("message", event => {
+  if (event.data === "SKIP_WAITING") {
+    self.skipWaiting();
+  }
 });
