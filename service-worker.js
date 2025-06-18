@@ -1,12 +1,12 @@
-const CACHE_NAME = 'movimiento-training-v1';
+const CACHE_NAME = 'movimiento-training-v3';
 const URLS_TO_CACHE = [
   '/',
   '/index.html',
   '/script.js',
   '/style.css',
   '/manifest.json',
-  '/banda de suspension.jpg',
-  '/wallpaper.wiki-Wallpapers-Free-Crossfit-Download-PIC-WPB004205-1024x683 (1).jpg',
+  '/banda-de-suspension.jpg',
+  '/wallpaper-crossfit.jpg',
   '/logo.png',
   '/icon-192x192.png',
   '/icon-512x512.png',
