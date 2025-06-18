@@ -7,7 +7,7 @@
 
   <link rel="stylesheet" href="style.css">
 
-  <link rel="manifest" href="manifest.json">
+  <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#F44336">
   <link rel="apple-touch-icon" sizes="192x192" href="/icon-192.png">
   <link rel="apple-touch-icon" sizes="512x512" href="/icon-512.png">
@@ -114,14 +114,13 @@
 
   <script src="script.js"></script>
   <script>
-    // Registro del Service Worker
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js') 
-          .then(reg => console.log('✅ Service Worker registrado', reg))
-          .catch(err => console.error('❌ Error al registrar Service Worker', err));
-      });
-    }
-  </script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(() => console.log("✅ Service Worker registrado correctamente"))
+        .catch(err => console.error("❌ Error registrando Service Worker", err));
+    });
+  }
+</script>
 </body>
 </html>
