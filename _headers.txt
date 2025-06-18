@@ -1,2 +1,0 @@
-/service-worker.js
-Access-Control-Allow-Origin: *
