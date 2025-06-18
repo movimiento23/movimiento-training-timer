@@ -1,15 +1,15 @@
-const CACHE_NAME = 'movimiento-training-v3';
+const CACHE_NAME = 'movimiento-training-v4';
 const URLS_TO_CACHE = [
   '/',
   '/index.html',
   '/script.js',
   '/style.css',
   '/manifest.json',
-  '/banda-de-suspension.jpg',
-  '/wallpaper-crossfit.jpg',
+  '/icon-192.png',
+  '/icon-512.png',
   '/logo.png',
-  '/icon-192x192.png',
-  '/icon-512x512.png',
+  '/screenshot-desktop.png',
+  '/screenshot-mobile.png',
   '/start_work.mp3',
   '/start_rest.mp3',
   '/countdown.mp3',
@@ -21,68 +21,44 @@ const URLS_TO_CACHE = [
   'https://fonts.gstatic.com/s/robotomono/v23/L0xuDF4xlVMF-BfR8bXMIhJHg45mwgGEFl0_3vrtSM1J-g.woff2'
 ];
 
+// Instalación del Service Worker y almacenamiento en caché
 self.addEventListener('install', event => {
-  self.skipWaiting(); // Activar el SW de inmediato, sin esperar al reload
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
-        console.log('Opened cache');
+        console.log('✅ Caché abierta y archivos almacenados');
         return cache.addAll(URLS_TO_CACHE);
       })
   );
 });
 
-
-// Fetch assets from cache or network
+// Intercepta las solicitudes y devuelve desde caché o red
 self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request)
       .then(response => {
-        // Cache hit - return response
-        if (response) {
-          return response;
-        }
-
-        // Clone the request because it's a one-time use stream
-        const fetchRequest = event.request.clone();
-
-        return fetch(fetchRequest).then(
-          response => {
-            // Check if we received a valid response
-            if (!response || response.status !== 200 || response.type !== 'basic') {
-              if (response.type === 'opaque' && response.url.startsWith('https://fonts.gstatic.com')) {
-                 // allow opaque responses for google fonts
-              } else {
-                return response;
-              }
+        return response || fetch(event.request).then(networkResponse => {
+          return caches.open(CACHE_NAME).then(cache => {
+            if (event.request.method === 'GET') {
+              cache.put(event.request, networkResponse.clone());
             }
-            
-            // Clone the response because it's also a one-time use stream
-            const responseToCache = response.clone();
-
-            caches.open(CACHE_NAME)
-              .then(cache => {
-                // We only cache GET requests
-                if(event.request.method === 'GET') {
-                    cache.put(event.request, responseToCache);
-                }
-              });
-
-            return response;
-          }
-        );
-      })
-    );
+            return networkResponse;
+          });
+        });
+      }).catch(() => caches.match('/index.html')) // En caso de fallo, cargar la página principal
+  );
 });
 
-// Clean up old caches
+// Limpieza de cachés antiguas
 self.addEventListener('activate', event => {
   const cacheWhitelist = [CACHE_NAME];
   event.waitUntil(
     caches.keys().then(cacheNames => {
       return Promise.all(
         cacheNames.map(cacheName => {
-          if (cacheWhitelist.indexOf(cacheName) === -1) {
+          if (!cacheWhitelist.includes(cacheName)) {
+            console.log(`🗑 Eliminando caché antigua: ${cacheName}`);
             return caches.delete(cacheName);
           }
         })
