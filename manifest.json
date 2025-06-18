@@ -2,6 +2,7 @@
   "name": "Movimiento Training Timer",
   "short_name": "Training Timer",
   "description": "Temporizador de entrenamiento y cronómetro para tus workouts.",
+  "id": "/index.html",  <-- ¡Esta es la línea que debes agregar!
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -16,7 +17,7 @@
     {
       "src": "icon-512x512.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512", <-- ¡Coma faltante aquí!
       "purpose": "any maskable"
     }
   ],
