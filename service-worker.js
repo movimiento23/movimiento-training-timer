@@ -33,7 +33,7 @@ self.addEventListener("activate", event => {
       );
     })
   );
-  clients.claim(); // Garantizar que los nuevos clientes usen el SW actualizado
+  clients.claim(); // Garantizar que todos los clientes usen la nueva versión
 });
 
 // Interceptar solicitudes y servir desde caché
@@ -45,7 +45,16 @@ self.addEventListener("fetch", event => {
   );
 });
 
-// Forzar actualización cuando hay un nuevo SW
+// Forzar actualización y evitar redundancia
+self.addEventListener("install", event => {
+  self.skipWaiting();
+});
+
+self.addEventListener("activate", event => {
+  clients.claim();
+});
+
+// Manejo de mensajes para actualización manual
 self.addEventListener("message", event => {
   if (event.data === "SKIP_WAITING") {
     self.skipWaiting();
