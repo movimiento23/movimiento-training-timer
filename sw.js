@@ -14,7 +14,7 @@ const URLS_TO_CACHE = [
   './start_rest.mp3',
   './countdown.mp3',
   './finish.mp3'
-  'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@700&display=swap',
+  'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap',
   'https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2',
   'https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlfBBc4.woff2',
   'https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmYUtfBBc4.woff2',
