@@ -6,7 +6,7 @@ const URLS_TO_CACHE = [
   './style.css',
   './manifest.json',
   './banda de suspension.jpg',
-  './wallpaper.jpg',
+  './wallpaper.wiki-Wallpapers-Free-Crossfit-Download-PIC-WPB004205-1024x683 (1).jpg',
   './logo.png',
   './icon-192x192.png',
   './icon-512x512.png',
