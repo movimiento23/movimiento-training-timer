@@ -1,0 +1,104 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movimiento Training</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#F44336">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.ico.png" type="image/png">
+    <link rel="apple-touch-icon" href="icon-192x192.png">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <img class="logo" src="logo.png" alt="Movimiento Training Logo">
+            <h1>Movimiento Training</h1>
+        </header>
+        
+        <main>
+            <div id="interval-timer-app">
+                <!-- Setup View -->
+                <div id="setup-view">
+                    <h2 id="setup-title">Ponete En Movimiento</h2>
+                    <div class="control-group">
+                        <label>SETS</label>
+                        <div class="input-control">
+                            <button class="btn-control" data-action="decrease" data-target="sets">-</button>
+                            <span id="sets-value">8</span>
+                            <button class="btn-control" data-action="increase" data-target="sets">+</button>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label>TRABAJO</label>
+                        <div class="input-control">
+                            <button class="btn-control" data-action="decrease" data-target="work">-</button>
+                            <span id="work-value">00:20</span>
+                            <button class="btn-control" data-action="increase" data-target="work">+</button>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label>DESCANSO</label>
+                        <div class="input-control">
+                            <button class="btn-control" data-action="decrease" data-target="rest">-</button>
+                            <span id="rest-value">00:10</span>
+                            <button class="btn-control" data-action="increase" data-target="rest">+</button>
+                        </div>
+                    </div>
+                    <button id="start-btn" class="btn-primary">Empezar</button>
+                </div>
+
+                <!-- Timer View -->
+                <div id="timer-view" class="hidden">
+                    <div id="timer-info">
+                        <p id="current-set-display">SET 1 / 8</p>
+                        <h2 id="current-phase-display">TRABAJO</h2>
+                    </div>
+                    <div id="timer-display">00:20</div>
+                    <div class="timer-controls">
+                        <button id="pause-resume-btn" class="btn-secondary">Pausar</button>
+                        <button id="reset-btn" class="btn-secondary">Reiniciar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="stopwatch-app">
+                <h2>Cronómetro</h2>
+                <div id="stopwatch-display">00:00:00.00</div>
+                <div class="stopwatch-controls">
+                    <button id="stopwatch-start-stop-btn" class="btn-primary">Iniciar</button>
+                    <button id="stopwatch-lap-reset-btn" class="btn-secondary">Vuelta</button>
+                </div>
+                <ul id="laps-list"></ul>
+            </div>
+
+            <div id="workout-presets">
+                <h2>Elegí Tu Entrenamiento</h2>
+                <select id="presets-select" class="btn-secondary">
+                    <option value="">Seleccionar workout...</option>
+                    <option value="amrap10">Amrap 10´</option>
+                    <option value="amrap12">Amrap 12´</option>
+                    <option value="amrap15">Amrap 15´</option>
+                    <option value="emom10">Emom 10´</option>
+                    <option value="emom12">Emom 12´</option>
+                    <option value="tabata4">TABATA 4´</option>
+                    <option value="circuito45x15">Circuito 45 x 15</option>
+                    <option value="hiit30x15">HIIT 30 x 15 x 3</option>
+                    <option value="hiit25x15">HIIT 25 x 15 x 3</option>
+                </select>
+            </div>
+        </main>
+
+        <footer>
+            <div id="install-container" class="hidden">
+                <button id="install-btn" class="btn-secondary">Instalar App</button>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

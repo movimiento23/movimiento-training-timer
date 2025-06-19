@@ -1,0 +1,26 @@
+{
+    "short_name": "Movimiento", 
+    "name": "Movimiento Training", 
+    "icons": [
+    {
+      "src": "icon-192x192.png",
+      "sizes": "192x192"
+      "type": "image/png",
+      
+    },
+    {
+      "src": "icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+    "start_url":"/index.html", 
+    "display": "standalone", 
+    "background_color": "##121212", 
+    "theme_color": "#F44336", 
+    "orientation": "portrait", 
+    "categories": ["fitness","businetemporizador"]
+    }
+  ]
+} 
+                    

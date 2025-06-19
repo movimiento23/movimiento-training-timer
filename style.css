@@ -1,0 +1,319 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-image: url('/wallpaper.wiki-Wallpapers-Free-Crossfit-Download-PIC-WPB004205-1024x683 (1).jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #ffffff;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding-top: 20px;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(18, 18, 18, 0.65);
+    z-index: -1;
+}
+
+.app-container {
+    background-image: url("/banda de suspension.jpg");
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.app-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(30, 30, 30, 0.8);
+    z-index: 2;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 3;
+}
+
+.logo {
+    width: 60px;
+    margin-bottom: 10px;
+}
+
+header h1 {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: #F44336; /* A red accent color */
+}
+
+main {
+    position: relative;
+    z-index: 3;
+}
+
+main h2 {
+    font-size: 20px;
+    font-weight: 500;
+    color: #e0e0e0;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+#setup-title {
+    margin-top: 10px;
+}
+
+/* Interval Timer Styles */
+#interval-timer-app {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #333;
+    margin-bottom: 20px;
+}
+
+.control-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #333;
+}
+
+#setup-view .control-group:first-of-type {
+    border-top: 1px solid #333;
+}
+
+.control-group label {
+    font-size: 16px;
+    font-weight: 400;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.input-control {
+    display: flex;
+    align-items: center;
+}
+
+.input-control span {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 15px;
+    min-width: 70px;
+    text-align: center;
+}
+
+.btn-control {
+    background-color: #333;
+    border: none;
+    color: #fff;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-control:hover {
+    background-color: #444;
+}
+
+.btn-primary {
+    background-color: #F44336;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 30px;
+    width: 100%;
+    transition: background-color 0.2s;
+    box-sizing: border-box;
+}
+
+.btn-primary:hover {
+    background-color: #d32f2f;
+}
+
+.btn-secondary {
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 50px;
+    cursor: pointer;
+    margin: 5px;
+    transition: background-color 0.2s;
+}
+
+.btn-secondary:hover {
+    background-color: #666;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Timer View Styles */
+#timer-view {
+    padding: 20px 0;
+}
+
+#timer-info #current-set-display {
+    font-size: 18px;
+    color: #aaa;
+    margin: 0;
+}
+
+#timer-info #current-phase-display {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 10px 0;
+    color: #F44336; /* Red for work */
+    text-transform: uppercase;
+}
+
+#timer-display {
+    font-size: 80px;
+    font-weight: 700;
+    margin: 20px 0;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.timer-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Stopwatch Styles */
+#stopwatch-app {
+    padding-top: 10px;
+}
+
+#stopwatch-display {
+    font-size: 48px;
+    font-weight: 700;
+    margin: 20px 0;
+    font-family: 'Roboto Mono', monospace; /* Monospace for steady numbers */
+}
+
+.stopwatch-controls {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 15px;
+}
+
+.stopwatch-controls button {
+    flex: 1;
+    max-width: 180px;
+    margin: 0;
+    padding: 15px 10px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+#laps-list {
+    list-style-type: none;
+    padding: 0;
+    max-height: 150px;
+    overflow-y: auto;
+    text-align: left;
+    margin-top: 20px;
+}
+
+#laps-list li {
+    background-color: #2a2a2a;
+    padding: 10px 15px;
+    margin-bottom: 5px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+}
+#laps-list li span:first-child {
+    color: #aaa;
+}
+
+/* Workout Presets Styles */
+#workout-presets {
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    margin-top: 20px;
+}
+
+#workout-presets h2 {
+    margin-top: 0;
+    color: #ffffff;
+}
+
+#presets-select {
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1.2em;
+    padding-right: 3rem; /* Make space for arrow */
+}
+
+/* Footer & Install Button */
+footer {
+    position: relative;
+    z-index: 3;
+    padding-top: 15px;
+    margin-top: 15px;
+    border-top: 1px solid #333;
+}
+
+#install-container {
+    display: flex;
+    justify-content: center;
+}
+
+#install-btn {
+    background-color: #03A9F4; /* A different, inviting color */
+    width: 100%;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+#install-btn:hover {
+    background-color: #0288D1;
+}
